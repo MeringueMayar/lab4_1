@@ -2,6 +2,9 @@ package edu.iis.mto.multithread;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+
+import java.util.concurrent.Executors;
+
 import static org.mockito.Mockito.times;
 
 import org.junit.Rule;
@@ -18,7 +21,7 @@ public class BetterRadarTest {
     @Test
     public void launchPatriotOnceWhenNoticesAScudMissle() {
         PatriotBattery batteryMock = mock(PatriotBattery.class);
-        BetterRadar radar = new BetterRadar(batteryMock);
+        BetterRadar radar = new BetterRadar(batteryMock, Executors.newSingleThreadExecutor());
         radar.notice(new Scud());
         verify(batteryMock, times(10)).launchPatriot();
     }

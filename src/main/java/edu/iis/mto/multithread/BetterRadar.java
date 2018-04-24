@@ -6,10 +6,12 @@ import java.util.concurrent.TimeUnit;
 
 public class BetterRadar {
     
+    private ExecutorService executor;
     private PatriotBattery battery;
 
-    public BetterRadar(PatriotBattery missle) {
+    public BetterRadar(PatriotBattery missle, ExecutorService executor) {
         this.battery = missle;
+        this.executor = executor;
     }
 
     public void notice(Scud enemyMissle) {
@@ -17,7 +19,6 @@ public class BetterRadar {
     }
 
     private void launchPatriot() {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(() -> {
             for (int i = 0; i < 10; i++) {
                 battery.launchPatriot();
