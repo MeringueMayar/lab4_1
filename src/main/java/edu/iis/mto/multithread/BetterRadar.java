@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class BetterRadar {
-
+    private ExecutorService executor = Executors.newFixedThreadPool(1);
     private PatriotBattery battery;
 
     public BetterRadar(PatriotBattery missle) {
@@ -16,7 +16,6 @@ public class BetterRadar {
     }
 
     private void launchPatriot() {
-        ExecutorService executor = Executors.newFixedThreadPool(1);
             Runnable launchPatriotTask = new Runnable() {
 
                 @Override

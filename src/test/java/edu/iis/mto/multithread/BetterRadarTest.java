@@ -14,7 +14,7 @@ public class BetterRadarTest {
     @Rule
     public RepeatRule repeatRule = new RepeatRule();
     @Test
-    @Repeat( times = 10000 )
+    @Repeat( times = 1000 )
     public void launchPatriotOnceWhenNoticesAScudMissle() {
         PatriotBattery batteryMock = mock(PatriotBattery.class);
         BetterRadar radar = new BetterRadar(batteryMock);
