@@ -14,6 +14,9 @@ import repeat.Repeat;
 public class BetterRadarTest {
 
 	private ExecutorService executorService = Executors.newSingleThreadExecutor();
+	
+	@Rule
+    public RepeatRule repeatRule = new RepeatRule();
 
 	@Test
 	@Repeat(times = 1000)
