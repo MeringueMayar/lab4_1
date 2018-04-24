@@ -6,10 +6,10 @@ import java.util.concurrent.Executors;
 public class BetterRadar {
 
     private PatriotBattery battery;
-    private int timesLaunched;
+    private ExecutorService executor;
 
-    public BetterRadar(PatriotBattery missle) {
-        this.timesLaunched = 0;
+    public BetterRadar(PatriotBattery missle, ExecutorService executor) {
+        this.executor = executor;
         this.battery = missle;
     }
 
@@ -19,7 +19,6 @@ public class BetterRadar {
 
     private void launchPatriot() {
 
-        ExecutorService executor = Executors.newFixedThreadPool(1);
         executor.execute( new Runnable() {
 
             @Override
