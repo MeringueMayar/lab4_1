@@ -14,7 +14,6 @@ public class BetterRadar {
     public BetterRadar(PatriotBattery missle, ExecutorService executorService) {
         this.executorService = executorService;
         this.battery = missle;
-        this.rockets = rockets;
     }
 
     public int getFiredRockets() {
