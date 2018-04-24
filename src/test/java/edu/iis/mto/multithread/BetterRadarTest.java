@@ -2,6 +2,7 @@ package edu.iis.mto.multithread;
 
 import org.junit.Before;
 import org.junit.Test;
+import repeat.Repeat;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -21,6 +22,7 @@ public class BetterRadarTest {
         enemyMissle = new Scud();
     }
     @Test
+    @Repeat( times = 10000 )
     public void launchRocketShouldLaunchPatriotTenTimes(){
         betterRadar.notice(enemyMissle);
         verify(patriotBattery, times(10)).launchPatriot();
