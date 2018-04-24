@@ -28,7 +28,5 @@ public class BetterRadar {
 		};
 
 		executorService.execute(launchPatriotTask);
-		// Thread launchingThread = new Thread(launchPatriotTask);
-		// launchingThread.start();
 	}
 }
