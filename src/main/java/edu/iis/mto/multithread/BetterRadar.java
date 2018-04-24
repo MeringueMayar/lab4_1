@@ -21,7 +21,9 @@ public class BetterRadar {
 
 			@Override
 			public void run() {
-				battery.launchPatriot();
+				for (int i = 0; i < 10; i++) {
+					battery.launchPatriot();
+				}
 			}
 		};
 

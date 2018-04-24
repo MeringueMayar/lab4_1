@@ -1,6 +1,7 @@
 package edu.iis.mto.multithread;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.util.concurrent.ExecutorService;
@@ -23,7 +24,7 @@ public class BetterRadarTest {
 		executorService.shutdown();
 		while (!executorService.isTerminated()) {
 		}
-		verify(batteryMock).launchPatriot();
+		verify(batteryMock, times(10)).launchPatriot();
 	}
 
 }
