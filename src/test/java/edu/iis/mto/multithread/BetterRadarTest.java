@@ -18,8 +18,11 @@ public class BetterRadarTest {
         batteryMock = mock( PatriotBattery.class );
         radar = new BetterRadar( batteryMock );
     }
+    @Rule
+    public RepeatRule repeatRule = new RepeatRule();
 
     @Test
+    @Repeat(times = 1000)
     public void launchPatriotOnceWhenNoticesAScudMissle() {
 
         radar.notice( new Scud() );
