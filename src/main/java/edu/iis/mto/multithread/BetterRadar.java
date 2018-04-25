@@ -6,7 +6,6 @@ public class BetterRadar implements IRadar {
     private PatriotBattery battery;
     private ExecutorService executorService;
     private boolean launchInSameThread = true;
-    private int launchNumber = 10;
 
     public BetterRadar(PatriotBattery missle) {
         this.battery = missle;
@@ -32,7 +31,7 @@ public class BetterRadar implements IRadar {
             }
         };
 
-        for(int i = 0; i < launchNumber; i++) {
+        for(int i = 0; i < 10; i++) {
             executorService.execute(launchPatriotTask);
         }
     }
