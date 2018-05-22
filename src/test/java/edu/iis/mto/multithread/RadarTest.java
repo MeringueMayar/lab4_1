@@ -5,12 +5,15 @@ import static org.mockito.Mockito.verify;
 
 import org.junit.Test;
 
+import java.util.concurrent.Executor;
+
 public class RadarTest {
 
     @Test
     public void launchPatriotOnceWhenNoticesAScudMissle() {
         PatriotBattery batteryMock = mock(PatriotBattery.class);
-        Radar radar = new Radar(batteryMock);
+        Executor executor = command -> command.run();
+        BetterRadar radar = new BetterRadar(batteryMock, executor);
         radar.notice(new Scud());
         verify(batteryMock).launchPatriot();
     }
