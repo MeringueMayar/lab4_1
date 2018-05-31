@@ -25,11 +25,11 @@ public class BetterRadarTest {
     }
     @Test
     @Repeat( times = 100000 )
-    public void launchRocketShouldLaunchPatriotTenTimes(){
+    public void launchRocketShouldLaunchPatriotOneTime(){
         Executor executor = command -> command.run();
         betterRadar = new BetterRadar(patriotBattery, executor);
 
         betterRadar.notice(enemyMissle);
-        verify(patriotBattery, times(10)).launchPatriot();
+        verify(patriotBattery, times(1)).launchPatriot();
     }
 }
