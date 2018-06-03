@@ -4,30 +4,29 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 import repeat.Repeat;
+import repeat.RepeatRule;
 
 public class BetterRadarTest {
-
-	private ExecutorService executorService = Executors.newSingleThreadExecutor();
 	
 	@Rule
     public RepeatRule repeatRule = new RepeatRule();
 
 	@Test
-	@Repeat(times = 1000)
+	@Repeat(times = 10)
 	public void launchPatriotOnceWhenNoticesAScudMissle() {
 		PatriotBattery batteryMock = mock(PatriotBattery.class);
-		BetterRadar betterRadar = new BetterRadar(batteryMock, executorService);
+		Executor executor = command -> command.run();
+		BetterRadar betterRadar = new BetterRadar(batteryMock, executor);
 		betterRadar.notice(new Scud());
-		executorService.shutdown();
-		while (!executorService.isTerminated()) {
-		}
-		verify(batteryMock, times(10)).launchPatriot();
+		verify(batteryMock).launchPatriot();
 	}
 
 }
