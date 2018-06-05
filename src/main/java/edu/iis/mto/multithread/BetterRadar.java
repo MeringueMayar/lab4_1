@@ -1,15 +1,17 @@
 package edu.iis.mto.multithread;
 
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 
 public class BetterRadar {
 
     private PatriotBattery battery;
-    private ExecutorService executorService;
+    private int firedMissiles;
+    private Executor executor;
 
-    public BetterRadar(PatriotBattery missle, ExecutorService executorService) {
+    public BetterRadar(PatriotBattery missle, int firedMissiles, Executor executor) {
         this.battery = missle;
-        this.executorService = executorService;
+        this.firedMissiles = firedMissiles;
+        this.executor = executor;
     }
 
     public void notice(Scud enemyMissle) {
@@ -21,11 +23,11 @@ public class BetterRadar {
 
             @Override
             public void run() {
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < firedMissiles; i++) {
                     battery.launchPatriot();
                 }
             }
         };
-        executorService.submit(launchPatriotTask);
+        executor.execute(launchPatriotTask);
     }
 }
