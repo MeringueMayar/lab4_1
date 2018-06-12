@@ -1,5 +1,6 @@
 package edu.iis.mto.multithread;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.concurrent.Executor;
@@ -10,7 +11,11 @@ import static org.mockito.Mockito.verify;
 
 public class BetterRadarTest {
 
+    @Rule
+    public RepeatRule repeatRule = new RepeatRule();
+
     @Test
+    @Repeat(times = 10)
     public void launchPatriotLaunchesTenTimesPatriotBattery(){
         PatriotBattery batteryMock = mock(PatriotBattery.class);
         Executor executor = new ExecutorServiceSameThread();
