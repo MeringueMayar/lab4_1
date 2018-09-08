@@ -2,7 +2,7 @@ package edu.iis.mto.multithread;
 
 import java.util.concurrent.Executor;
 
-public class BetterRadar {
+public class BetterRadar implements RadarInterface{
 
     private PatriotBattery battery;
     private Executor executor;
