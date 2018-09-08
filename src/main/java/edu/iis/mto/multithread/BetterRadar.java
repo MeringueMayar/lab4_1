@@ -7,12 +7,16 @@ public class BetterRadar {
     private PatriotBattery battery;
     private Executor executor;
 
-    public BetterRadar(PatriotBattery missle) {
-        this.battery = missle;
+    public BetterRadar(PatriotBattery missile) {
+        this.battery = missile;
+    }
+
+    BetterRadar(PatriotBattery missile, Executor executor) {
+        this.battery = missile;
         this.executor = executor;
     }
 
-    public void notice(Scud enemyMissle) {
+    public void notice(Scud enemyMissile) {
         launchPatriot();
     }
 
