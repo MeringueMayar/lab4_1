@@ -25,9 +25,7 @@ public class BetterRadar implements RadarInterface{
 
             @Override
             public void run() {
-                for (int i = 0; i < 10; i++) {
-                    battery.launchPatriot();
-                }
+                battery.launchPatriot();
             }
         };
 
